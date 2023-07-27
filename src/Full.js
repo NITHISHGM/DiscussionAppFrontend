@@ -1,9 +1,10 @@
 import React from "react";
-import { Breadcrumb, Button, Layout } from "antd";
+import { Button, Layout } from "antd";
 import { useNavigate } from "react-router-dom";
+import DiscussionList from "./components/DiscussionList";
 const { Header, Content, Footer } = Layout;
 
-const Full = () => {
+const Full = ({ children }) => {
   const navigate = useNavigate();
   const HandleClick = () => {
     navigate("/");
@@ -14,6 +15,9 @@ const Full = () => {
         <Header
           className="cls-head"
           style={{
+            position: "sticky",
+            top: 0,
+            zIndex: 1,
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
@@ -25,20 +29,12 @@ const Full = () => {
           </div>
         </Header>
         <Content
+          className="content-class"
           style={{
             padding: "0 50px",
           }}
         >
-          <Breadcrumb
-            style={{
-              margin: "16px 0",
-            }}
-          >
-            <Breadcrumb.Item>Home</Breadcrumb.Item>
-            <Breadcrumb.Item>List</Breadcrumb.Item>
-            <Breadcrumb.Item>App</Breadcrumb.Item>
-          </Breadcrumb>
-          <div className="site-layout-content">Content</div>
+          <div className="site-layout-content">{children}</div>
         </Content>
         <Footer
           style={{

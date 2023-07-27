@@ -42,3 +42,32 @@
 .text-center {
     text-align: center;
 }
+.content-class {
+    min-height: 465px;
+}
+.cursor-pointer{
+    cursor: pointer;
+}
+
+//mediaquery
+
+/* Media query for small screens (e.g., mobile devices) */
+@media screen and (max-width: 767px) {
+    .content-class {
+        min-height: 355px;
+    }
+}
+
+/* Media query for medium screens (e.g., tablets) */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    .content-class {
+        min-height: 375px;
+    }
+}
+
+/* Media query for larger screens (e.g., desktops) */
+@media screen and (min-width: 1024px) {
+    .content-class {
+        min-height: 528px;
+    }
+}

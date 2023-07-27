@@ -1,14 +1,31 @@
 import React from "react";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
-import { Button, Checkbox, Form, Input, Avatar } from "antd";
+import { Button, Checkbox, Form, Input, Avatar, message } from "antd";
 import img from "../img/logo192.png";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { ROOTURL } from "..";
 
 const Login = () => {
   const navigate = useNavigate();
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
-    navigate("/full");
+    const { email, password } = values;
+    axios
+      .post(`${ROOTURL}api/login`, { email, password })
+      .then((res) => {
+        if (res.status === 200) {
+          let token = res.data.token;
+          sessionStorage.setItem("token", token);
+          message.success("logged in successfull");
+          navigate("/discussionList");
+        } else {
+          message.error(res.data.error);
+        }
+      })
+      .catch(() => {
+        message.error("login failed");
+      });
   };
   return (
     <div>

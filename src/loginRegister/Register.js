@@ -1,14 +1,36 @@
 import React from "react";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
-import { Button, Form, Input, Avatar } from "antd";
+import { Button, Form, Input, Avatar, message } from "antd";
 import img from "../img/logo192.png";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { ROOTURL } from "..";
 
 const Register = () => {
   const navigate = useNavigate();
   const onFinish = (values) => {
+    const { email, username, password } = values;
     console.log("Received values of form: ", values);
-    navigate("/");
+    axios
+      .post(`${ROOTURL}api/register`, {
+        email,
+        name: username,
+        password,
+      })
+      .then(
+        (response) => {
+          if (response.status === 201) {
+            message.success("User Regestered!!!");
+            navigate("/");
+          } else {
+            message.error(response.data.error);
+          }
+        },
+        (error) => {
+          console.log(error);
+          message.error("User Regesteration failed");
+        }
+      );
   };
   return (
     <div className="reg-form">
