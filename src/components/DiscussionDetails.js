@@ -13,25 +13,35 @@ const DiscussionDetails = () => {
     <>
       {!status && !isEmpty(data) ? (
         <>
-          {console.log(
-            "SingleIDCommentStatus, SingleIDCommentData",
-            SingleIDCommentStatus,
-            SingleIDCommentData
-          )}
-          <Card title={data.title}>
+          <Card className="singleDiscussionCard">
             <Row>
               <Col span={24}>
-                {" "}
-                <div className="float-right">{data.createdAt}</div>
+                <div>
+                  <div>
+                    <span className="discussion-card-title">{data.title}</span>
+                    <div>
+                      <span className="disussion-card-author-title">
+                        {" "}
+                        {data.createrName} started at {data.createdAt}
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </Col>
-              <Col span={24}>{data.content}</Col>
+              <Col span={24}>
+                {" "}
+                <div className="discussion-card-content">{data.content}</div>
+              </Col>
             </Row>
           </Card>
-          <Row className="p-5">
-            <Col span={24}>
+          <Row>
+            <Col span={16}>
               {!SingleIDCommentStatus ? (
                 <>
+                  <div className="heading">Discussions</div>
                   <List
+                    className="singleDiscussionList"
+                    size="large"
                     itemLayout="horizontal"
                     dataSource={SingleIDCommentData}
                     renderItem={(item, index) => (
@@ -39,13 +49,32 @@ const DiscussionDetails = () => {
                         <List.Item.Meta
                           avatar={
                             <Avatar
-                              src={`https://xsgames.co/randomusers/avatar.php?g=pixel&key=${index}`}
-                            />
+                              size="large"
+                              style={{ background: "black" }}
+                            >
+                              {item.commenterName
+                                .substring(0, 2)
+                                .toLocaleUpperCase()}
+                            </Avatar>
                           }
                           title={
                             <span className="cursor-pointer">{item.title}</span>
                           }
-                          description={item.content}
+                          description={
+                            <div>
+                              <div>
+                                <span className="desc-title">
+                                  {item.commenterName}
+                                </span>
+
+                                <span className="desc-cmnt">
+                                  Commented on &nbsp;
+                                  {item.createdAt}
+                                </span>
+                              </div>
+                              <div className="desc-content">{item.content}</div>
+                            </div>
+                          }
                         />
                       </List.Item>
                     )}
@@ -55,6 +84,7 @@ const DiscussionDetails = () => {
                 <>Loading....</>
               )}
             </Col>
+            <Col span={8}></Col>
           </Row>
         </>
       ) : (

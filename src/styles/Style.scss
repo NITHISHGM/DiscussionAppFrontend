@@ -48,7 +48,61 @@
 .cursor-pointer{
     cursor: pointer;
 }
-
+.float-right{
+    float: right;
+}
+.singleDiscussionCard {
+    margin: 20px 0;
+    background: white;
+    border: 1px solid #979090;
+}
+.heading {
+    font-size: 20px;
+    font-style: oblique;
+    font-weight: 500;
+    padding: 10px 0;
+}
+.discussion-card-title {
+    font-size: 25px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    position: relative;
+}
+.disussion-card-author-title {
+    font-weight: 500;
+    color: grey;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+}
+.discussion-card-content {
+    padding: 12px;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+}
+.desc-cmnt {
+    padding-left: 15px;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+    color: grey;
+}
+span.desc-title {
+    font-size: 20px;
+    letter-spacing: 0.5px;
+    color: black;
+    font-weight: 500;
+}
+.desc-content {
+    padding: 10px 0;
+    font-size: 16px;
+    color: black;
+    letter-spacing: 0.5px;
+}
+.singleDiscussionList {
+    background: ghostwhite;
+    border: 1px solid #979090;
+    border-radius: 12px;
+}
 //mediaquery
 
 /* Media query for small screens (e.g., mobile devices) */
